@@ -1,5 +1,14 @@
 import React from "react"
 
-export default function Home() {
-  return <div>The Great Gatsby bootcamp</div>
+const IndexPage = () => {
+  return (
+    <div>
+      <h1>Hello,</h1>
+      <h2>
+        I'm Soundhar, a full-stack developer living in beautiful Coimbatore
+      </h2>
+    </div>
+  )
 }
+
+export default IndexPage
