@@ -4,6 +4,8 @@ import Layout from "../components/layout"
 
 import { graphql, Link } from "gatsby"
 
+import * as blogStyles from "./blog.module.scss"
+
 export const postsQuery = graphql`
   {
     allMarkdownRemark {
@@ -27,9 +29,9 @@ const BlogPage = ({ data }) => {
     <Layout>
       <h1>Blog</h1>
 
-      <ol>
+      <ol className={blogStyles.posts}>
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
-          <li key={index}>
+          <li key={index} className={blogStyles.post}>
             <Link to={`/blog/${node.fields.slug}`}>
               <h2>{node.frontmatter.title}</h2>
               <p>{node.frontmatter.date}</p>
