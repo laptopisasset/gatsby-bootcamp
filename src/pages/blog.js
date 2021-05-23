@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 export const postsQuery = graphql`
   {
@@ -12,6 +12,9 @@ export const postsQuery = graphql`
           frontmatter {
             title
             date
+          }
+          fields {
+            slug
           }
         }
       }
@@ -27,8 +30,10 @@ const BlogPage = ({ data }) => {
       <ol>
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
           <li key={index}>
-            <h2>{node.frontmatter.title}</h2>
-            <p>{node.frontmatter.date}</p>
+            <Link to={`/blog/${node.fields.slug}`}>
+              <h2>{node.frontmatter.title}</h2>
+              <p>{node.frontmatter.date}</p>
+            </Link>
           </li>
         ))}
       </ol>
