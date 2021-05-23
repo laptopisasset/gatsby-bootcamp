@@ -4,7 +4,7 @@ const ContactPage = () => {
   return (
     <div>
       <h1>Contact</h1>
-      <p>This page holds email address and contact details of me.</p>
+      <p>The best way to reach me is via email laptopisasset@gmail.com</p>
     </div>
   )
 }
