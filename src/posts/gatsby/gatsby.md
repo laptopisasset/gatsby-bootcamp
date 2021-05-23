@@ -5,6 +5,8 @@ date: "2020-05-23"
 
 I just launched a new bootcamp!
 
+![Ocean](./ocean.jpg)
+
 ## Topics Covered
 
 1. Gatsby
