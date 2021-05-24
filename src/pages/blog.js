@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import Head from "../components/head"
 
 import { graphql, Link } from "gatsby"
 
@@ -23,6 +24,7 @@ export const postsQuery = graphql`
 const BlogPage = ({ data }) => {
   return (
     <Layout>
+      <Head title="Blog" />
       <h1>Blog</h1>
 
       <ol className={blogStyles.posts}>
