@@ -16,8 +16,8 @@ export const query = graphql`
         references {
           contentful_id
           title
-          fixed {
-            src
+          file {
+            url
           }
         }
       }
@@ -32,7 +32,7 @@ const Blog = ({ data }) => {
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
-        const url = assets.get(node.data.target.sys.id).fixed.src
+        const url = assets.get(node.data.target.sys.id).file.url
         const alt = assets.get(node.data.target.sys.id).title
         return <img alt={alt} src={url} />
       },
