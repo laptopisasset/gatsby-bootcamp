@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+  pathPrefix: "/gatsby/example",
   /* Your site config here */
   siteMetadata: {
     title: "Full-Stack Bootcamp",
