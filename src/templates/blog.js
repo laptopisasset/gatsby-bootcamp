@@ -2,26 +2,51 @@ import React from "react"
 
 import { graphql } from "gatsby"
 
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+
 import Layout from "../components/layout"
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
-        date
+    contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      publishedDate(formatString: "MMMM Do, YYYY")
+      body {
+        raw
+        references {
+          contentful_id
+          title
+          fixed {
+            src
+          }
+        }
       }
-      html
     }
   }
 `
 
 const Blog = ({ data }) => {
+  const assets = new Map(
+    data.contentfulBlogPost.body.references.map(ref => [ref.contentful_id, ref])
+  )
+  const options = {
+    renderNode: {
+      "embedded-asset-block": node => {
+        const url = assets.get(node.data.target.sys.id).fixed.src
+        const alt = assets.get(node.data.target.sys.id).title
+        return <img alt={alt} src={url} />
+      },
+    },
+  }
+
   return (
     <Layout>
-      <h1>{data.markdownRemark.frontmatter.title}</h1>
-      <p>{data.markdownRemark.frontmatter.date}</p>
-      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div>
+      <h1>{data.contentfulBlogPost.title}</h1>
+      <p>{data.contentfulBlogPost.publishedDate}</p>
+      {documentToReactComponents(
+        JSON.parse(data.contentfulBlogPost.body.raw),
+        options
+      )}
     </Layout>
   )
 }
