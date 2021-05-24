@@ -1,0 +1,2 @@
+(self.webpackChunkgatsby_starter_hello_world=self.webpackChunkgatsby_starter_hello_world||[]).push([[682],{5518:function(e,t,l){"use strict";l.r(t);var r=l(7294),n=l(5444),a=l(7647),u=l(4695);t.default=function(){return r.createElement(a.Z,null,r.createElement(u.Z,{title:"About"}),r.createElement("h1",null,"About Me"),r.createElement("p",null,"I currently work as full-stack developer."),r.createElement("p",null,r.createElement(n.rU,{to:"/contact"},"Want to work with me? Reach out.")))}}}]);
+//# sourceMappingURL=component---src-pages-about-js-6aa2e0f94a56bd603a87.js.map
